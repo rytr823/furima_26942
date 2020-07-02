@@ -42,8 +42,6 @@ Things you may want to cover:
 - has_many :items through purchases
 - has_many :addresses
 - belongs_to_active_hash :birthday
-- has_many :sold, class_name:items, foreign_key: seller_id
-- has_many :bought, class_name:items, foreign_key: buyer_id
 
 
 ##addressesテーブル
@@ -78,8 +76,6 @@ Things you may want to cover:
 |postage_pay_id|integer|null: false|
 |shipping_area_id|integer|null: false|
 |days_until_shipping_id|integer|null: false|
-|seller|integer|null: false, to_tables: :users|
-|buyer_id|integer|null: false, to_tables: users|
 
 ###Association
 - has_many :purchases
@@ -89,5 +85,14 @@ Things you may want to cover:
 - belongs_to_active_hash :postage_pay
 - belongs_to_active_hash :prefecture
 - belongs_to_active_hash :days_until_shipping
-- belongs_to:seller, class_name:users
-- belongs_to:buyer, class_name:users
+
+
+##purchasesテーブル
+|Colum|Type|Options|
+|-----|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+
+###Association
+- belongs_to :user
+- belongs_to :item
