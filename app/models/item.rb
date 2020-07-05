@@ -19,7 +19,7 @@ class Item < ApplicationRecord
     assoc.validates :shipping_area_id
     assoc.validates :days_until_shipping_id
   end
-  
+
   with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :status_id
