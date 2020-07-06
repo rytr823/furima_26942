@@ -5,17 +5,17 @@ class Item < ApplicationRecord
   belongs_to_active_hash :postage_pay
   belongs_to_active_hash :shipping_area
   belongs_to_active_hash :days_until_shipping
+  has_one_attached :image
 
   with_options presence: true do |assoc|
     assoc.validates :name
-    assoc.validates :image
     assoc.validates :introduction
     assoc.validates :price
-    assoc.validates :seles_commission
-    assoc.validates :seles_profit
+    assoc.validates :sales_commission
+    assoc.validates :sales_profit
     assoc.validates :category_id
     assoc.validates :status_id
-    assoc.validates :postage_id
+    assoc.validates :postage_pay_id
     assoc.validates :shipping_area_id
     assoc.validates :days_until_shipping_id
   end
@@ -23,8 +23,9 @@ class Item < ApplicationRecord
   with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :status_id
-    validates :postage_id
-    validates :shipping_area_id
+    validates :postage_pay_id
     validates :days_until_shipping_id
   end
+
+  validates :price, inclusion: {in: 300..9999999 } 
 end

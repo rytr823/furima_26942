@@ -5,10 +5,10 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model: @item, id: "new_item" local: true do |f| %>
+    <%= form_with(model: @item, id: "new_item", local: true) do |f| %>
 
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%# render 'shared/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: f.object %>
     <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
     <%# 出品画像 %>
@@ -93,7 +93,7 @@
         <a class="question" href="#">?</a>
       </div>
       <div>
-        <div class="price-content">
+        <div class="price-content price">
           <div class="price-text">
             <span>価格</span>
             <span class="indispensable">必須</span>
@@ -104,16 +104,17 @@
         <div class="price-content">
           <span>販売手数料 (10%)</span>
           <span>
-            <span id='add-tax-price'></span>円
+            <div class="sales_commission"></div>
+              <%= f.hidden_field :sales_commission, id:'add-tax-price' %>円 
           </span>
         </div>
         <div class="price-content">
           <span>販売利益</span>
           <span>
-            <span id='profit'></span>円
+            <div class="sales_profit"></div>
+              <%= f.hidden_field :sales_profit, id:'profit'%>円
+          </span>
         </div>
-        </span>
-      </div>
     </div>
     <%# /販売価格 %>
 
@@ -142,8 +143,9 @@
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
+    <% end %>
   </div>
-  <% end %>
+  </div>
 
   <footer class="items-sell-footer">
     <ul class="menu">
