@@ -5,7 +5,19 @@ class Item < ApplicationRecord
   belongs_to_active_hash :postage_pay
   belongs_to_active_hash :shipping_area
   belongs_to_active_hash :days_until_shipping
+
   has_one_attached :image
+  # validate :image_should_be_presence
+  # def image_should_be_presence
+  #   if !image.attached?
+  #     errors.add(:image, 'を添付してください')
+  #   end
+  # end
+  validates_presence_of :image
+
+  # def blob_is_image?
+  #   image.blob.content_type == 'application/zip' && image.blob.filename.extension_without_delimiter == 'image'
+  # end
 
   with_options presence: true do |assoc|
     assoc.validates :name
@@ -27,5 +39,5 @@ class Item < ApplicationRecord
     validates :days_until_shipping_id
   end
 
-  validates :price, inclusion: {in: 300..9999999 } 
+  validates :price, inclusion: { in: 300..9_999_999 }
 end
