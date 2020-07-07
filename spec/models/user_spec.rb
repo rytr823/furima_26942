@@ -72,7 +72,7 @@ describe User do
       expect(user.errors[:birthday]).to include("can't be blank")
     end
 
-    # 重複したemailが存在知る場合は登録できないこと
+    # 重複したemailが存在する場合は登録できないこと
     it 'is invalid with a duplicate email address' do
       user = create(:user)
       another_user = build(:user, email: user.email)
