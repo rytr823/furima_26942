@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
 
   describe '#create' do
     # 全てのカラムが存在すれば登録できること
@@ -14,8 +13,6 @@ RSpec.describe Item, type: :model do
     it 'is invalid without a image' do
       item = build(:item)
       item.image = nil
-      # @item.image.purge
-      # @item.image.detach
       item.valid?
       expect(item.errors[:image]).to include("can't be blank")
     end
