@@ -9,9 +9,12 @@
     <div class='item-img-content'>
       <%= image_tag @item.image ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sould outの表示をしましょう。 %>
+      <% if @buyer.nil? %>
+      <% else%>
       <div class='sold-out'>
         <span>Sold Out!!</span>
       </div>
+      <% end %>
       <%# //商品が売れている場合は、sould outの表示をしましょう。 %>
     </div>
     <div class="item-price-box">
@@ -30,7 +33,10 @@
     <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
     <% end %>
     <%# 商品が売れていない場合はこちらを表示しましょう %>
-    <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
+    <% if user_signed_in? && current_user.id != @item.user_id %>
+      <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
+    <% else %>
+    <% end %>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
 
     <%# //ログインしていて、なおかつ、ログインしているユーザと出品しているユーザが同一人物でないとき表示しましょう。 %>
@@ -42,27 +48,27 @@
       <tbody>
         <tr>
           <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= "出品者名" %></td>
+          <td class="detail-value"><%= @item.user.nickname %></td>
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= "カテゴリー名" %></td>
+          <td class="detail-value"><%= @item.category.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= "商品の状態" %></td>
+          <td class="detail-value"><%= @item.status.name %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= "発送料の負担" %></td>
+          <td class="detail-value"><%= @item.postage_pay.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= "発送元の地域" %></td>
+          <td class="detail-value"><%= @item.shipping_area.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= "発送日の目安" %></td>
+          <td class="detail-value"><%= @item.days_until_shipping.name %></td>
         </tr>
       </tbody>
     </table>
