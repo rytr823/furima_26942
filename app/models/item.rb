@@ -23,6 +23,7 @@ class Item < ApplicationRecord
     assoc.validates :postage_pay_id
     assoc.validates :shipping_area_id
     assoc.validates :days_until_shipping_id
+    assoc.validates :user
   end
 
   with_options numericality: { other_than: 1 } do

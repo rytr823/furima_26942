@@ -13,5 +13,6 @@ FactoryBot.define do
     after(:build) do |item|
       item.image.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'sample.jpg')), filename: 'sample.jpg')
     end
+    association :user
   end
 end
