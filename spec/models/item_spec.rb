@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-
   describe '#create' do
     # 全てのカラムが存在すれば登録できること
     it 'is valid with all column' do
