@@ -6,6 +6,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_area
   belongs_to_active_hash :days_until_shipping
 
+  belongs_to :user
+  has_one :purchase
+
   has_one_attached :image
   validates_presence_of :image
 

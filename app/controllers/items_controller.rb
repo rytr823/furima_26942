@@ -40,7 +40,8 @@ class ItemsController < ApplicationController
       :status_id,
       :postage_pay_id,
       :shipping_area_id,
-      :days_until_shipping_id
-    )
+      :days_until_shipping_id,
+      :user_id
+    ).merge(user_id: current_user.id)
   end
 end
