@@ -11,6 +11,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :postage_pay_id, null: false
       t.integer :shipping_area_id, null: false
       t.integer :days_until_shipping_id, null: false
+      t.references :user, null: false, foreign_key: true
       t.timestamps
     end
   end

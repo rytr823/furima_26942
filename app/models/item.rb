@@ -6,6 +6,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_area
   belongs_to_active_hash :days_until_shipping
 
+  belongs_to :user
+  has_one :purchase
+
   has_one_attached :image
   validates_presence_of :image
 
@@ -20,6 +23,7 @@ class Item < ApplicationRecord
     assoc.validates :postage_pay_id
     assoc.validates :shipping_area_id
     assoc.validates :days_until_shipping_id
+    assoc.validates :user
   end
 
   with_options numericality: { other_than: 1 } do
