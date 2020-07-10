@@ -1,3 +1,5 @@
 class PurchasesController < ApplicationController
-  @buyer = Purchase.find(params[:id])
+  def index
+    @buyer = Purchase.find(params[:id])
+  end
 end
