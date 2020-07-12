@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :item
-  before_action :move_toppage
   before_action :soldout
+  before_action :move_toppage
 
   def index
     redirect_to user_session_path unless user_signed_in?
@@ -18,7 +18,7 @@ class PurchasesController < ApplicationController
   end
 
   def soldout
-    @purchase = Purchase.find(params[:item_id])
+    @purchase = Purchase.find_by(params[:item_id])
     redirect_to root_path unless @purchase.nil?
   end
 end
