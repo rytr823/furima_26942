@@ -17,19 +17,7 @@ class PurchasesController < ApplicationController
     else
       render "index"
     end
-    
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-
-    
-    Payjp::Charge.create(
-      amount: @item.price,
-      card: params[:card_token],
-      currency: 'jpy',
-    )
-    purchase = Purchase.create(
-      item_id: params[:item_id],
-      user_id: current_user.id
-    )
+    payjp
   end
 
 
@@ -54,4 +42,18 @@ class PurchasesController < ApplicationController
             :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number)
     .merge(user_id: current_user.id, item_id: @item.id)
   end
+
+  def payjp
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+    amount: @item.price,
+    card: params[:card_token],
+    currency: 'jpy',
+    )
+    purchase = Purchase.create(
+    item_id: params[:item_id],
+    user_id: current_user.id
+    )
+  end
+
 end
