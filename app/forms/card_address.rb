@@ -3,7 +3,6 @@ class CardAddress
   include ActiveModel::Model
   attr_accessor :user_id, :item_id,
                 :card_token,
-                # :postal_code, :prefectures, :city, :address, :building_name, :phone_number
                 :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number
   with_options presence: true do
   validates :card_token
