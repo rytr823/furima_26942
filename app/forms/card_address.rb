@@ -11,7 +11,7 @@ class CardAddress
   validates :prefecture_id
   validates :city
   validates :address
-  validates :phone_number
+  validates :phone_number, format: {with: /\A\d{1,11}\z/, message: "は11桁以内で入力してください"}
   end
 
   def save

@@ -3,11 +3,14 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order('created_at DESC')
+    # @purchase = Purchase.find_by(item_id: params[:item_id])
+    # binding.pry
   end
 
   def new
     @item = Item.new
   end
+
 
   def create
     @item = Item.new(item_params)
@@ -59,7 +62,7 @@ class ItemsController < ApplicationController
       :postage_pay_id,
       :shipping_area_id,
       :days_until_shipping_id,
-      :user_id
-    ).merge(user_id: current_user.id)
+      :user_id,
+    ).merge(user_id: current_user.id,item_id: @item.id)
   end
 end
