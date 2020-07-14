@@ -3,8 +3,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order('created_at DESC')
-    # @purchase = Purchase.find_by(item_id: params[:item_id])
-    # binding.pry
   end
 
   def new
