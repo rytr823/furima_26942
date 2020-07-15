@@ -61,6 +61,6 @@ class ItemsController < ApplicationController
       :shipping_area_id,
       :days_until_shipping_id,
       :user_id,
-    ).merge(user_id: current_user.id,item_id: @item.id)
+    ).merge(user_id: current_user.id)
   end
 end
