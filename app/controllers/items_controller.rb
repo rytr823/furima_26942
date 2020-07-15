@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
+
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -59,7 +60,7 @@ class ItemsController < ApplicationController
       :postage_pay_id,
       :shipping_area_id,
       :days_until_shipping_id,
-      :user_id
+      :user_id,
     ).merge(user_id: current_user.id)
   end
 end
