@@ -38,27 +38,8 @@ Things you may want to cover:
 |birthday|integer|null: false|
 
 ###Association
+- has_many :items 
 - has_many :purchases
-- has_many :items through purchases
-- has_many :addresses
-- belongs_to_active_hash :birthday
-
-
-##addressesテーブル
-
-|Colum|Type|Options|
-|-----|----|-------|
-|postal_code|integer|null: false|
-|prefectures|integer|null: false|
-|city|string|null: false|
-|address|string|null: false|
-|building_name|string|
-|phone_number|integer|null: false|
-|user_id|integer|null: false, foreign_key: true|
-
-###Association
-- belongs_to :user
-- belongs_to_active_hash :prefecture
 
 
 ##itemsテーブル
@@ -66,8 +47,7 @@ Things you may want to cover:
 |Colum|Type|Options|
 |-----|----|-------|
 |name|string|null: false|
-|image|string|null: false|
-|introduction|null: false|
+|introduction|string|null: false|
 |price|integer|null: false|
 |sales_commission|integer|null: false|
 |sales_profit|integer|null: false|
@@ -76,16 +56,36 @@ Things you may want to cover:
 |postage_pay_id|integer|null: false|
 |shipping_area_id|integer|null: false|
 |days_until_shipping_id|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
 
 ###Association
 - has_many :purchases
-- has_many :users through purchases
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
 - belongs_to_active_hash :postage_pay
-- belongs_to_active_hash :prefecture
+- belongs_to_active_hash :shipping_area
 - belongs_to_active_hash :days_until_shipping
+- belongs_to :user
+- has_one :purchase
+- has_one :card, dependent: :destroy
+- has_one :address
+- has_one_attached :image
 
+##addressesテーブル
+
+|Colum|Type|Options|
+|-----|----|-------|
+|postal_code|string|null: false|
+|prefecture_id|integer|null: false|
+|city|string|null: false|
+|address|string|null: false|
+|building_name|string|
+|phone_number|string|null: false|
+|item_id|integer|null: false, foreign_key: true|
+
+###Association
+- belongs_to_active_hash :prefecture
+- belongs_to :item
 
 ##purchasesテーブル
 |Colum|Type|Options|
@@ -95,4 +95,14 @@ Things you may want to cover:
 
 ###Association
 - belongs_to :user
+- belongs_to :item
+
+
+##cardsテーブル
+|Colum|Type|Options|
+|-----|----|-------|
+|card_token|string|null: false|
+|item_id|integer|null: false, foreign_key: true|
+
+###Association
 - belongs_to :item

@@ -1,6 +1,6 @@
 class Address < ApplicationRecord
   belongs_to :item
-  # belongs_to_active_hash :prefecture
+  belongs_to_active_hash :prefecture
   with_options presence: true do
     validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, messsgge: "は「-」も入力してください"}
     validates :prefecture_id
