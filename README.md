@@ -105,4 +105,4 @@ Things you may want to cover:
 |item_id|integer|null: false, foreign_key: true|
 
 ###Association
-- belongs_to :item
+- belongs_to :item 
