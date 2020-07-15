@@ -6,10 +6,9 @@ RSpec.describe Address, type: :model do
     before do
       @address = build(:address)
     end
-    
+
     # building_name以外のカラムが存在すれば登録できること
     it 'is valid with a column other than the building name' do
-      
       expect(@address).to be_valid
     end
 
@@ -52,21 +51,21 @@ RSpec.describe Address, type: :model do
     it 'is invalid without a item' do
       @address.item = nil
       @address.valid?
-      expect(@address.errors[:item]).to include("must exist")
+      expect(@address.errors[:item]).to include('must exist')
     end
 
-    #postage_codeにはハイフンが無ければ登録できないこと
+    # postage_codeにはハイフンが無ければ登録できないこと
     it 'is invalid without a - ' do
-        @address.postal_code = '1234567'
-        @address.valid?
-        expect(@address.errors[:postal_code]).to include("is invalid")
+      @address.postal_code = '1234567'
+      @address.valid?
+      expect(@address.errors[:postal_code]).to include('is invalid')
     end
 
-    #phone_numberはハイフン不要で11桁以内でないと登録できないこと
+    # phone_numberはハイフン不要で11桁以内でないと登録できないこと
     it 'is invalid wothout no hyphens required and within 11 digits' do
       @address.phone_number = '123456789101112'
       @address.valid?
-      expect(@address.errors[:phone_number]).to include("は11桁以内で入力してください")
+      expect(@address.errors[:phone_number]).to include('は11桁以内で入力してください')
     end
   end
 end

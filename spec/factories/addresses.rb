@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :address do
-    postal_code     { '111-1111'}
+    postal_code     { '111-1111' }
     prefecture_id   { '1' }
     city            { '札幌' }
     address         { '1' }
