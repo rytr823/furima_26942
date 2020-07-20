@@ -66,3 +66,4 @@ gem 'active_hash'
 gem 'jquery-rails'
 gem 'mini_magick'
 gem 'payjp'
+gem 'aws-sdk-s3', require: false
