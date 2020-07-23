@@ -16,49 +16,49 @@ RSpec.describe Address, type: :model do
     it 'is invalid without a postal_code' do
       @address.postal_code = nil
       @address.valid?
-      expect(@address.errors[:postal_code]).to include("can't be blank")
+      expect(@address.errors[:postal_code]).to include("を入力してください", "は不正な値です")
     end
 
     # prefecture_idが空であれば登録できないこと
     it 'is invalid without a prefecture_id' do
       @address.prefecture_id = nil
       @address.valid?
-      expect(@address.errors[:prefecture_id]).to include("can't be blank")
+      expect(@address.errors[:prefecture_id]).to include("を入力してください")
     end
 
     # cityが空であれば登録できないこと
     it 'is invalid without a city' do
       @address.city = nil
       @address.valid?
-      expect(@address.errors[:city]).to include("can't be blank")
+      expect(@address.errors[:city]).to include("を入力してください")
     end
 
     # addressが空であれば登録できないこと
     it 'is invalid without a address' do
       @address.address = nil
       @address.valid?
-      expect(@address.errors[:address]).to include("can't be blank")
+      expect(@address.errors[:address]).to include("を入力してください")
     end
 
     # phone_numberが空であれば登録できないこと
     it 'is invalid without a phone_number' do
       @address.phone_number = nil
       @address.valid?
-      expect(@address.errors[:phone_number]).to include("can't be blank")
+      expect(@address.errors[:phone_number]).to include("を入力してください", "は11桁以内で入力してください")
     end
 
     # item_idが空であれば登録できないこと
     it 'is invalid without a item' do
       @address.item = nil
       @address.valid?
-      expect(@address.errors[:item]).to include('must exist')
+      expect(@address.errors[:item]).to include('を入力してください')
     end
 
     # postage_codeにはハイフンが無ければ登録できないこと
     it 'is invalid without a - ' do
       @address.postal_code = '1234567'
       @address.valid?
-      expect(@address.errors[:postal_code]).to include('is invalid')
+      expect(@address.errors[:postal_code]).to include('は不正な値です')
     end
 
     # phone_numberはハイフン不要で11桁以内でないと登録できないこと

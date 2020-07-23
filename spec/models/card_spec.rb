@@ -16,14 +16,14 @@ RSpec.describe Card, type: :model do
     it 'is invalid without a card_token' do
       @card.card_token = nil
       @card.valid?
-      expect(@card.errors[:card_token]).to include("can't be blank")
+      expect(@card.errors[:card_token]).to include("を入力してください")
     end
 
     # itemが空であれば登録できないこと
     it 'is invalid without a item_id' do
       @card.item = nil
       @card.valid?
-      expect(@card.errors[:item]).to include('must exist')
+      expect(@card.errors[:item]).to include('を入力してください')
     end
   end
 end
