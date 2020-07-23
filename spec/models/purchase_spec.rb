@@ -15,14 +15,14 @@ RSpec.describe Purchase, type: :model do
     it 'is invalid without a user_id' do
       @purchase.user = nil
       @purchase.valid?
-      expect(@purchase.errors[:user]).to include('must exist')
+      expect(@purchase.errors[:user]).to include('を入力してください')
     end
 
     # itemが空であれば登録できないこと
     it 'is invalid without a item_id' do
       @purchase.item = nil
       @purchase.valid?
-      expect(@purchase.errors[:item]).to include('must exist')
+      expect(@purchase.errors[:item]).to include('を入力してください')
     end
   end
 end

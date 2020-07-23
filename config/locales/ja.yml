@@ -1,0 +1,33 @@
+ja:
+  activerecord:
+    attributes:
+    
+      user:
+        nickname: ニックネーム
+        family_name: 苗字
+        last_name: 名前
+        family_name_katakana: 苗字(カタカナ)
+        last_name_katakana: 名前(カタカナ)
+        birthday: 誕生日
+      item:
+        text: テキスト
+        image: 画像
+        name: 商品名
+        introduction: 商品説明
+        price: 価格
+        sales_commission: 販売手数料(10%)
+        sales_profit: 販売利益
+        category_id: カテゴリー
+        status_id: 商品の状態
+        postage_pay_id: 配送料の負担
+        shipping_area_id: 発送元の地域
+        days_until_shipping_id: 発送までの日数
+
+  activemodel:
+    attributes:
+      card_address: 
+        postal_code: 郵便番号
+        city: 市区町村
+        address: 番地
+        phone_number: 電話番号
+    

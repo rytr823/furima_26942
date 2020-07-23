@@ -1,5 +1,4 @@
-class CardAddress
-  # include ActiveModel::ActiveModel
+class CardAddress 
   include ActiveModel::Model
   attr_accessor :user_id, :item_id,
                 :card_token,
