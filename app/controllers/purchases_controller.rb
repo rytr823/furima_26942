@@ -10,14 +10,14 @@ class PurchasesController < ApplicationController
 
   def create
     @detail = CardAddress.new(purchase_params)
-    payjp
-    purchase = Purchase.create(
-      item_id: params[:item_id],
-      user_id: current_user.id
-    )
     if @detail.valid?
-      @detail.save
-      redirect_to root_path
+       @detail.save
+       payjp
+        purchase = Purchase.create(
+          item_id: params[:item_id],
+          user_id: current_user.id
+        )
+        redirect_to root_path
     else
       render 'index'
     end
