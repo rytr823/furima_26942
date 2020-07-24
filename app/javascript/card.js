@@ -26,6 +26,8 @@ const pay = () => {
       document.getElementById("charge-form").reset();
       }   
       else{
+        alert('カード情報の読み込みに失敗しました。')
+        document.getElementById("charge-form").submit().prop('disabled', false);
       }
     });
     });
